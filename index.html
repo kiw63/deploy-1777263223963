@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NANZERA STORE - Digital Market</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0f172a; color: #f8fafc; min-height: 100vh; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gradient-text { background: linear-gradient(to right, #3b82f6, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="p-6">
+
+    <header class="max-w-6xl mx-auto text-center mb-12">
+        <h1 class="text-4xl font-extrabold gradient-text tracking-tighter">NANZERA STORE</h1>
+        <p class="text-gray-400 mt-2">Pilih produk, bayar via QRIS, dan kirim bukti ke WhatsApp</p>
+    </header>
+
+    <main class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="glass rounded-3xl p-5 border border-transparent hover:border-blue-500 transition-all shadow-xl">
+                <img src="https://files.catbox.moe/crab9h.jpg" class="w-full h-48 object-cover rounded-2xl mb-4">
+                <h3 class="text-xl font-bold">Log GGL Bind On</h3>
+                <p class="text-gray-400 text-sm mb-4">Detail akun silakan lihat pada gambar. Akun login Google dengan status Bind On.</p>
+                <p class="text-2xl font-black text-blue-400 mb-4">Rp 150.000</p>
+                <button onclick="bukaForm('Log GGL Bind On', 150000)" class="w-full bg-blue-600 py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors">BELI SEKARANG</button>
+            </div>
+
+            <div class="glass rounded-3xl p-5 border border-transparent hover:border-blue-500 transition-all shadow-xl">
+                <img src="https://files.catbox.moe/xks3ym.jpg" class="w-full h-48 object-cover rounded-2xl mb-4">
+                <h3 class="text-xl font-bold">APK BUG WA GG</h3>
+                <p class="text-gray-400 text-sm mb-4">APK Bug WA efek GG bisa sampai mokad. Bisa dijual lagi & ada fitur nonton Anime + Douyin.</p>
+                <p class="text-2xl font-black text-blue-400 mb-4">Rp 30.000</p>
+                <button onclick="bukaForm('APK BUG WA GG', 30000)" class="w-full bg-blue-600 py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors">BELI SEKARANG</button>
+            </div>
+
+            <div class="glass rounded-3xl p-5 border border-transparent hover:border-blue-500 transition-all shadow-xl">
+                <img src="https://files.catbox.moe/xe26di.jpg" class="w-full h-48 object-cover rounded-2xl mb-4">
+                <h3 class="text-xl font-bold">Produk Baru</h3>
+                <p class="text-gray-400 text-sm mb-4">Isi deskripsi produk ketiga kamu di sini menggunakan link Catbox.</p>
+                <p class="text-2xl font-black text-blue-400 mb-4">Rp 0</p>
+                <button onclick="bukaForm('Produk Baru', 0)" class="w-full bg-blue-600 py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors">BELI SEKARANG</button>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="formModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90">
+        <div class="glass w-full max-w-md p-8 rounded-[2.5rem] relative">
+            <h2 class="text-xl font-bold mb-2 text-center text-white">Konfirmasi Pesanan</h2>
+            <p id="detailProduk" class="text-center text-blue-400 font-bold mb-6 text-sm"></p>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="text-[10px] text-gray-400 uppercase font-bold ml-2">Nama Anda</label>
+                    <input type="text" id="custName" placeholder="Masukkan nama..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div class="bg-white p-3 rounded-2xl flex flex-col items-center shadow-inner">
+                    <p class="text-[10px] text-black font-bold mb-2 uppercase tracking-widest">Scan QRIS Dana</p>
+                    <img src="https://files.catbox.moe/xe26di.jpg" class="w-44 h-44 rounded-lg"> </div>
+
+                <div class="bg-blue-900/40 p-4 rounded-xl border border-blue-500/30">
+                    <p class="text-[11px] text-blue-300 font-bold uppercase mb-1 flex items-center gap-2">
+                        <i class="fas fa-info-circle"></i> Cara Pembayaran:
+                    </p>
+                    <p class="text-[10px] text-gray-300 leading-relaxed">
+                        1. Scan QRIS & Bayar sesuai harga total.<br>
+                        2. Klik tombol konfirmasi untuk membuka WhatsApp.<br>
+                        3. <b>Kirim foto bukti transfer</b> di chat agar diproses.
+                    </p>
+                </div>
+
+                <button onclick="kirimKeOwner()" class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-2xl font-bold mt-4 shadow-lg flex items-center justify-center gap-2 transition-transform active:scale-95">
+                    <i class="fab fa-whatsapp text-xl"></i> KONFIRMASI KE OWNER
+                </button>
+                <button onclick="tutupForm()" class="w-full text-gray-500 text-xs mt-2 uppercase font-bold tracking-widest">Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const OWNER_NUMBER = "6285134793273"; 
+        let selectedProduct = "";
+        let selectedPrice = 0;
+
+        function bukaForm(nama, harga) {
+            selectedProduct = nama;
+            selectedPrice = harga;
+            document.getElementById('detailProduk').innerText = `${nama} • Rp ${harga.toLocaleString()}`;
+            document.getElementById('formModal').classList.remove('hidden');
+            document.getElementById('formModal').classList.add('flex');
+        }
+
+        function tutupForm() {
+            document.getElementById('formModal').classList.add('hidden');
+            document.getElementById('formModal').classList.remove('flex');
+        }
+
+        function kirimKeOwner() {
+            const name = document.getElementById('custName').value;
+            if (!name) return alert("Harap isi nama anda!");
+
+            // Kode unik acak agar mudah cek mutasi Dana
+            const kodeUnik = Math.floor(Math.random() * 999);
+            const totalBayar = selectedPrice + kodeUnik;
+
+            const teks = `Halo NANZERA, saya ingin konfirmasi pembayaran!\n\n` +
+                         `👤 Nama: ${name}\n` +
+                         `📌 Produk: ${selectedProduct}\n` +
+                         `💰 Total TF: Rp ${totalBayar.toLocaleString()}\n\n` +
+                         `*BERIKUT SAYA LAMPIRKAN FOTO BUKTI TRANSFER:*`;
+
+            const url = `https://wa.me/${OWNER_NUMBER}?text=${encodeURIComponent(teks)}`;
+            
+            window.open(url, '_blank');
+            alert("Chat WhatsApp terbuka. Silakan lampirkan foto bukti transfernya ya!");
+        }
+    </script>
+</body>
+</html>
